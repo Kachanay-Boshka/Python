@@ -7,7 +7,7 @@ def change_json_file(name_file):
     file_json.close()
     data["quiz"]["maths"]["q3"] = {"question": "6 - 3", "options": ["0", "2", "3", "4"], "answer": "3"}
     with open(name_file, 'w') as file_json:
-        file_json.write(json.dumps(data))
+        file_json.write(json.dumps(data, indent=2))
 
 
 def main():
