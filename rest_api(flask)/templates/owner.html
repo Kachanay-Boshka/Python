@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <h1 class="my-title">
+        Database of car owners
+
+    </h1>
+    <table align="center">
+        <td>
+            <img style="width:300px" src="/static/pics/license.jpg" alt="license">
+        </td>
+        <td>
+            <p style="font-size: 25px; padding: 0 60px">
+                User id (owner): {{ owners['id'] }}<br><br>
+                Name: {{ owners['name'] }}<br>
+                Surname: {{ owners['surname'] }}<br>
+                Phone number: {{ owners['phone number'] }}<br>
+            </p>
+        </td>
+    </table>
+    <br>
+    <table>
+        <tr>
+        <td width="90%">
+    <form action="/owners/{{owners['id']}}/cars" method="get">
+        <button class="my-bt">View cars</button>
+    </form>
+        </td>
+        <td >
+    <form action="/owners" method="get">
+        <button class="my-bt">Back to owners</button>
+    </form>
+        </td>
+        </tr>
+    </table>
+</body>
+</html>

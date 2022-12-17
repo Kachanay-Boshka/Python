@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <h1 class="my-title">
+        Database of car owners
+    </h1>
+    {% block content %}
+    <table>
+    <td>
+            <p>
+            This database stores information about car owners.<br>
+            Each car is classified by body type, color and brand.
+            </p>
+    </td>
+        <td>
+            <img style="width:300px" src="/static/pics/car_index.jpg" alt="Car">
+
+        </td>
+    </table>
+     <form method="get" action="/owners">
+        <button id="open-base">
+            Open base
+        </button>
+    </form>
+    {% endblock %}
+</body>
+</html>

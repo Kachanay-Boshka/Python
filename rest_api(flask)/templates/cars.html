@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <h1 class="my-title">
+        Database of car owners
+    </h1>
+    {% if data %}
+    <h3 class="my-title">
+        Cars owned by a user with an ID: {{ data[0]['id_owner'] }}
+    </h3>
+    <table>
+    <td width="60%">
+        <h2 style="margin: 10px 0 5px; padding: 0 60px">User Information</h2>
+        <p style="font-size: 25px; padding: 0 60px">
+            Name: {{ data[0]['name'] }} <br>
+            Surname: {{ data[0]['surname'] }} <br>
+            Phone Number: {{ data[0]['phone_number'] }} <br>
+        </p>
+    </td>
+    <td>
+        <img style="width: 350px;" src="/static/pics/garage.jpg" alt="the car is in the garage">
+    </td>
+    </table>
+
+    <h3 class="my-title">
+        Cars
+    </h3>
+
+    <table class="my-table">
+  <tr>
+      <th> Car id </th>
+      <th> Brand </th>
+      <th> Color </th>
+      <th> Type </th>
+      <th> More </th>
+  </tr>
+  {% for cars in data %}
+  <tr id="tr-owners">
+
+      <td>
+          {{ cars['id_car'] }}
+      </td>
+      <td>
+          {{ cars['brand'] }}
+      </td>
+      <td>
+          {{ cars['color'] }}
+      </td>
+      <td>
+          {{ cars['body_type'] }}
+      </td>
+      <td>
+          <form action="/owners/{{ id }}/cars/{{cars['id_car']}}" method="get">
+              <button id="bt-view">Select</button>
+          </form>
+      </td>
+
+  </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+     <table>
+    <td width="60%">
+        <p style="font-size: 25px; padding: 0 60px">
+            <p>The user (with id <b>{{ id }}</b>) has no cars in the property</p>
+        </p>
+    </td>
+    <td>
+        <img style="width: 350px;" src="/static/pics/nogarage.jpg" ALT="the car is not in the garage">
+    </td>
+    </table>
+    {% endif %}
+    <br>
+     <table align="right">
+    <tr>
+        <td>
+            <form action="/owners/{{id}}" method="get">
+            <button class="my-bt">Back</button>
+            </form>
+        </td>
+        <td>
+            <form action="/owners" method="get">
+            <button class="my-bt">Back to owners</button>
+            </form>
+        </td>
+    </tr>
+    </table>
+</body>
+</html>

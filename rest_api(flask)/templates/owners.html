@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block content %}
+<h3 class="my-title">Owners</h3>
+<table class="my-table">
+  <tr>
+    <th> Id </th>
+    <th> Name </th>
+    <th> Surname </th>
+    <th> Phone number </th>
+    <th> More </th>
+  </tr>
+  {% for owner in owners %}
+  <tr id="tr-owners">
+    {% for data in owner.values() %}
+      <td>
+          {{ data }}
+      </td>
+    {% endfor %}
+      <td>
+            <form action="/owners/{{owner['id']}}" method="get">
+                <button id="bt-view">Select</button>
+            </form>
+      </td>
+  </tr>
+  {% endfor %}
+</table>
+ {% endblock %}

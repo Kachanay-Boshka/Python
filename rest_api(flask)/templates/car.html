@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <h1 class="my-title">
+        Database of car owners
+    </h1>
+    <table>
+        <td>
+            <img style="width:300px" src="/static/pics/car1.jpg" alt="car">
+        </td>
+        <td>
+            <p style="font-size: 25px; padding: 0 60px">
+                User id (owner): {{ id }}<br>
+                Information about the car with the ID {{ data['id_car']}}
+            </p>
+        </td>
+    </table>
+    <table class="my-table">
+        <tr>
+            <th> Brand </th>
+            <th> Color </th>
+            <th> Type </th>
+        </tr>
+        <tr id="tr-owners">
+            <td>
+                {{ data['brand'] }}
+            </td>
+            <td>
+                {{ data['color'] }}
+            </td>
+            <td>
+                {{ data['body_type'] }}
+            </td>
+        </tr>
+    </table>
+    <table align="right">
+    <tr>
+        <td>
+            <form action="/owners/{{id}}/cars" method="get">
+            <button class="my-bt">Back</button>
+            </form>
+        </td>
+        <td>
+            <form action="/owners" method="get">
+            <button class="my-bt">Back to owners</button>
+            </form>
+        </td>
+    </tr>
+    </table>
+</body>
+</html>
